@@ -4,3 +4,47 @@
   font-family: sans-serif;
   padding: 5px;
 }
+
+#calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 30px 90px 70px 70px 70px 70px 70px;
+  grid-gap: 10px;
+  background-color: #bcb29e;
+  width: 400px;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 2px 2px #333;
+}
+
+.button {
+  background-color: #f7efde;
+  border-radius: 12px;
+  color: black;
+  text-align: center;
+  line-height: 60px;
+  vertical-align: middle;
+  font-size: 2em;
+  box-shadow: 2px 2px #333;
+}
+
+#brand-logo {
+  grid-column: 1 / 6;
+  background-color: inherit;
+  color: black;
+}
+
+#display {
+  grid-column: 1 / 6;
+  background-color: #777;
+  border-style: inset;
+  border-width: medium;
+  border-color: #666;
+  text-align: right;
+  font-size: 4em;
+  color: black;
+}
+
+#clear, #all-clear {
+  background-color: #e88645;
+}
