@@ -7,5 +7,11 @@ Next steps to complete:
   - Leading zeros
   - Decimal point
   - Displaying large numbers
+* Set up immediate operations
+  - Percent
+  - Square root
+  - +/-
 * Set up operators
+  - Move display value to the actionStack
+  - Add operator to the
 * Add support for keypresses on the keyboard

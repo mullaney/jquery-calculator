@@ -1,13 +1,13 @@
 var display = '0';
 var actionStack = [display.value];
 var displayNumberExtendable = true;
-var currentError = '';
+var memory = 0;
 
 var setAllClear = function () {
   display = '0';
   actionStack = [];
+  var memory = 0;
   displayNumberExtendable = true;
-  // displayValue(display);
 };
 
 var displayValue = function (str) {
@@ -25,13 +25,6 @@ var displayValue = function (str) {
   }
   $('#display').text(str);
 };
-
-var displayError = function (str) {
-  if (!str) {
-    str = currentError;
-  }
-  $('#error').text(currentError);
-}
 
 setAllClear();
 displayValue();
@@ -57,16 +50,29 @@ $(".button").on("click", function() {
     display = (- Number(display)).toString();
   } else if (this.id === 'square-root') {
     if (Number(display) < 0) {
-      currentError = 'Square root of a negative number is not a real number.';
+      display = 'Error';
     } else {
       display = (Math.sqrt(Number(display))).toString();
-      displayNumberExtendable = false;
     }
+    displayNumberExtendable = false;
   } else if (this.id === 'clear') {
     display = '0';
+  } else if (this.id === 'mem-clear') {
+    memory = 0;
+  } else if (this.id === 'mem-recall') {
+    display = memory.toString();
+    displayNumberExtendable = false;
+  } else if (this.id === 'mem-plus') {
+    if (Number(display) !== NaN) {
+      memory += Number(display);
+      displayNumberExtendable = false;
+    }
+  } else if (this.id === 'mem-minus') {
+    if (Number(display) !== NaN) {
+      memory += Number(display);
+      displayNumberExtendable = false;
+    }
   }
-  displayError(currentError);
-  currentError = '';
   displayValue(display);
   console.log(this.id);
 });

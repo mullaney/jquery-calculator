@@ -5,12 +5,6 @@
   padding: 5px;
 }
 
-#error {
-  width: 400px;
-  margin: 0 auto;
-  font-style: italic;
-}
-
 #calculator {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
