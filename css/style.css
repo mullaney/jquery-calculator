@@ -5,6 +5,11 @@
   padding: 5px;
 }
 
+#error {
+  width: 400px;
+  margin: 0 auto;
+  font-style: italic;
+}
 
 #calculator {
   display: grid;
