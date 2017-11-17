@@ -7,16 +7,24 @@
 
 
 #calculator {
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 30px 90px 70px 70px 70px 70px 70px;
   grid-gap: 10px;
   background-color: #bcb29e;
   width: 400px;
+  height: 545px;
   padding: 12px;
   border-radius: 12px;
   box-shadow: 4px 4px #333;
+
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
 }
 
 .button {
