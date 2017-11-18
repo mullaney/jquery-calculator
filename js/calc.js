@@ -1,5 +1,4 @@
 var display = '0';
-var actionStack = [display.value];
 var displayNumberExtendable = true;
 var memory = 0;
 var lastNumber = 0;
@@ -15,6 +14,9 @@ var setAllClear = function () {
   displayNumberExtendable = true;
   lastNumber = 0;
   lastOperator = '';
+  justEqualed = false;
+  arg1 = 0;
+  arg2 = 0;
 };
 
 var displayValue = function (str) {
