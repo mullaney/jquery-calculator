@@ -25,7 +25,7 @@ function DisplayedValue() {
         }
       }
     }
-    // console.log(this.displayedString, this.value, this.str);
+    console.log(this.displayedString, this.value, this.str);
     $('#display').text(this.displayedString);
   }
 }
@@ -33,8 +33,8 @@ function DisplayedValue() {
 var setAllClear = function () {
   display.set(0);
   buttonStack = [];
-  lastArg1 = null;
-  lastArg2 = null;
+  arg1 = null;
+  arg2 = null;
   memory = 0;
   lastOperator = '';
 };
@@ -54,8 +54,8 @@ function calculate(arg1, arg2, oper) {
 var display = new DisplayedValue();
 var memory = 0;
 var buttonStack = [];
-var lastArg1 = null;
-var lastArg2 = null;
+var arg1 = null;
+var arg2 = null;
 var lastButtonType = '';
 var lastOperator = '';
 
@@ -79,8 +79,8 @@ $(".button").on("click", function() {
       display.set(display.str + this.id);
     }
     if (lastButtonType === 'equal') {
-      lastArg1 = null;
-      lastArg2 = null;
+      arg1 = null;
+      arg2 = null;
       lastOperator = '';
     }
     lastButtonType = 'digit';
@@ -94,9 +94,11 @@ $(".button").on("click", function() {
   } else if (this.id === 'percent') {
     display.set(display.value / 100);
     lastButtonType = 'operator';
+    arg1 = display.value;
   } else if (this.id === 'plus-minus') {
     display.set(-display.value);
     lastButtonType = 'operator';
+    arg1 = display.value;
   } else if (this.id === 'square-root') {
     if (display.value < 0) {
       display.set('Error');
@@ -104,6 +106,7 @@ $(".button").on("click", function() {
     } else {
       display.set(Math.sqrt(display.value));
       lastButtonType = 'operator';
+      arg1 = display.value;
     }
   } else if (this.id === 'mem-clear') {
     memory = 0;
@@ -125,40 +128,40 @@ $(".button").on("click", function() {
     if (lastButtonType === 'operator') {
       lastOperator = this.id;
     } else if (lastButtonType === 'digit') {
-      if (lastArg1 === null) {
-        lastArg1 = display.value;
+      if (arg1 === null) {
+        arg1 = display.value;
       } else {
-        lastArg2 = display.value;
-        lastArg1 = calculate(lastArg1, lastArg2, this.id);
-        display.set(lastArg1);
+        arg2 = display.value;
+        arg1 = calculate(arg1, arg2, lastOperator);
+        display.set(arg1);
       }
       lastOperator = this.id;
     }
     lastButtonType = 'operator';
   } else if (this.id === 'equal') {
     if (lastButtonType === 'operator') {
-      if (lastArg1) {
-        lastArg2 = lastArg1;
-        lastArg1 = calculate(lastArg1, lastArg2, lastOperator);
-        display.set(lastArg1);
+      if (arg1) {
+        arg2 = arg1;
+        arg1 = calculate(arg1, arg2, lastOperator);
+        display.set(arg1);
       }
     } else if (lastButtonType === 'digit') {
-      if (lastArg1) {
-        lastArg2 = display.value;
-        lastArg1 = calculate(lastArg1, lastArg2, lastOperator);
-        display.set(lastArg1);
+      if (arg1) {
+        arg2 = display.value;
+        arg1 = calculate(arg1, arg2, lastOperator);
+        display.set(arg1);
       }
     } else if (lastButtonType === 'equal') {
-      if (lastArg1 && lastArg2) {
-        lastArg1 = calculate(lastArg1, lastArg2, lastOperator);
-        display.set(lastArg1);
+      if (arg1 && arg2) {
+        arg1 = calculate(arg1, arg2, lastOperator);
+        display.set(arg1);
       }
     }
     lastButtonType = 'equal';
   }
-  // console.log('lastArg1:', lastArg1);
-  // console.log('lastArg2:', lastArg2);
-  // console.log('lastOperator:', lastOperator);
-  // console.log('lastButtonType:', lastButtonType);
+  console.log('arg1:', arg1);
+  console.log('arg2:', arg2);
+  console.log('lastOperator:', lastOperator);
+  console.log('lastButtonType:', lastButtonType);
   display.show();
 });
