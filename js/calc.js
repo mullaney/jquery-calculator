@@ -25,7 +25,7 @@ function DisplayedValue() {
         }
       }
     }
-    console.log(this.displayedString, this.value, this.str);
+    // console.log(this.displayedString, this.value, this.str);
     $('#display').text(this.displayedString);
   }
 }
@@ -156,71 +156,9 @@ $(".button").on("click", function() {
     }
     lastButtonType = 'equal';
   }
-  console.log('lastArg1:', lastArg1);
-  console.log('lastArg2:', lastArg2);
-  console.log('lastOperator:', lastOperator);
-  console.log('lastButtonType:', lastButtonType);
+  // console.log('lastArg1:', lastArg1);
+  // console.log('lastArg2:', lastArg2);
+  // console.log('lastOperator:', lastOperator);
+  // console.log('lastButtonType:', lastButtonType);
   display.show();
 });
-
-
-//   } else if (['divide', 'multiply', 'subtract', 'add'].indexOf(this.id) >= 0) {
-//     lastNumber = Number(display);
-//     lastOperator = this.id;
-//     displayNumberExtendable = false;
-//   } else if (this.id === 'equal') {
-//     if (lastOperator && display != 'Error') {
-//       if (lastOperator === 'divide' && Number(display) === 0) {
-//           display = 'Error';
-//       } else {
-//         if (justEqualed == false) {
-//           arg1 = lastNumber;
-//           arg2 = Number(display);
-//         } else {
-//           // arg1 = Number(display);
-//           // arg2 = lastNumber;
-//         }
-//         if (lastOperator === 'divide') {
-//           display = (arg1 / arg2).toString();
-//         } else if (lastOperator === 'multiply') {
-//           display = (arg1 * arg2).toString();
-//         } else if (lastOperator === 'subtract') {
-//           display = (arg1 - arg2).toString();
-//         } else if (lastOperator === 'add') {
-//           display = (arg1 + arg2).toString();
-//         }
-//         arg1 = Number(display);
-//         displayNumberExtendable = false;
-//         justEqualed = true;
-//       }
-//     }
-//   }
-//   if (justEqualed == true && this.id !== 'equal') {
-//     justEqualed = false;
-//   }
-//   displayValue(display);
-//   console.log(this.id);
-// });
-
-
-
-// var displayNumberExtendable = true;
-// var memory = 0;
-// var actionStack = [];
-//
-//
-// var displayValue = function (str) {
-//   if (!str) {
-//     str = display;
-//   }
-//   if (str.length > 10) {
-//     var decimalIndex = str.indexOf('.');
-//     console.log(decimalIndex);
-//     if (str.indexOf('.') > -1) {
-//       str = (Number(str).toPrecision(9 - decimalIndex)).toString();
-//     }
-  // }
-//
-// setAllClear();
-// displayValue();
-//
