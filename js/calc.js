@@ -78,6 +78,11 @@ $(".button").on("click", function() {
     } else {
       display.set(display.str + this.id);
     }
+    if (lastButtonType === 'equal') {
+      lastArg1 = null;
+      lastArg2 = null;
+      lastOperator = '';
+    }
     lastButtonType = 'digit';
   } else if (this.id === 'decimal') {
     if (display.str.indexOf('.') === -1) {
@@ -132,14 +137,29 @@ $(".button").on("click", function() {
     lastButtonType = 'operator';
   } else if (this.id === 'equal') {
     if (lastButtonType === 'operator') {
-
+      if (lastArg1) {
+        lastArg2 = lastArg1;
+        lastArg1 = calculate(lastArg1, lastArg2, lastOperator);
+        display.set(lastArg1);
+      }
     } else if (lastButtonType === 'digit') {
-
+      if (lastArg1) {
+        lastArg2 = display.value;
+        lastArg1 = calculate(lastArg1, lastArg2, lastOperator);
+        display.set(lastArg1);
+      }
     } else if (lastButtonType === 'equal') {
-
+      if (lastArg1 && lastArg2) {
+        lastArg1 = calculate(lastArg1, lastArg2, lastOperator);
+        display.set(lastArg1);
+      }
     }
     lastButtonType = 'equal';
   }
+  console.log('lastArg1:', lastArg1);
+  console.log('lastArg2:', lastArg2);
+  console.log('lastOperator:', lastOperator);
+  console.log('lastButtonType:', lastButtonType);
   display.show();
 });
 
