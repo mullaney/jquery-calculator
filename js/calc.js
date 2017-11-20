@@ -25,7 +25,7 @@ function DisplayedValue() {
         }
       }
     }
-    console.log(this.displayedString, this.value, this.str);
+    // console.log(this.displayedString, this.value, this.str);
     $('#display').text(this.displayedString);
   }
 }
@@ -125,7 +125,7 @@ $(".button").on("click", function() {
       lastButtonType = 'memory';
     }
   } else if (['divide', 'multiply', 'subtract', 'add'].indexOf(this.id) >= 0) {
-    if (lastButtonType === 'operator') {
+    if (lastButtonType === 'operator' || lastButtonType === 'equal') {
       lastOperator = this.id;
     } else if (lastButtonType === 'digit') {
       if (arg1 === null) {
@@ -159,9 +159,9 @@ $(".button").on("click", function() {
     }
     lastButtonType = 'equal';
   }
-  console.log('arg1:', arg1);
-  console.log('arg2:', arg2);
-  console.log('lastOperator:', lastOperator);
-  console.log('lastButtonType:', lastButtonType);
+  // console.log('arg1:', arg1);
+  // console.log('arg2:', arg2);
+  // console.log('lastOperator:', lastOperator);
+  // console.log('lastButtonType:', lastButtonType);
   display.show();
 });
